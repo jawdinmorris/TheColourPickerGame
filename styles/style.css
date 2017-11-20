@@ -8,6 +8,7 @@ body {
 	color: white;
 	text-align: center;
 	padding-bottom:20px;
+	transition: background-color 1s ease;
 }
 
 
@@ -27,6 +28,7 @@ body {
 	padding-left:0px;
 	padding-left: 10px;
 	padding-right: 10px;
+	cursor:pointer;
 	
 }
 
@@ -34,12 +36,14 @@ body {
 	float:right;
 	padding-left: 10px;
 	padding-right: 10px;
+	cursor:pointer;
 }
 
 #reset {
 	float:left;
 	padding-left:10px;
 	padding-right:10px;
+	cursor:pointer;
 }
 
 #result {
@@ -59,8 +63,8 @@ body {
 	float : left;
 	margin: 1.66%;
 	border-radius : 15px;
-	transition: background-color 0.8s ease;
-
+	transition: background-color 1s ease;
+cursor:pointer;
 }
 
 .container {
@@ -69,6 +73,11 @@ body {
 }
 
 .active {
-	background: #6492db;
+	background-color: #6492db;
 	color: white;
+}
+
+.plain {
+	background-color: white;
+	color:#6492db;
 }
