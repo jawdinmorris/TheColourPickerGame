@@ -1,0 +1,74 @@
+body {
+	background: black;
+	font-family:"Cabin";
+	letter-spacing: 3px;
+}
+#topBar {
+	background: #6492db;
+	color: white;
+	text-align: center;
+	padding-bottom:20px;
+}
+
+
+#secondBar {
+	background: white;
+	color: #6492db;
+	font-size:15px;
+}
+
+#mainGame {
+
+	padding-top:50px;
+}
+
+#hard {
+	float: right;
+	padding-left:0px;
+	padding-left: 10px;
+	padding-right: 10px;
+	
+}
+
+#easy {
+	float:right;
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
+#reset {
+	float:left;
+	padding-left:10px;
+	padding-right:10px;
+}
+
+#result {
+	color: white;
+	text-align: center;
+	font-size:20px;
+}
+
+
+#titleColor {
+	text-transform: uppercase;
+}
+.colorSquare {
+	background-color: red;
+	width : 30%;
+	padding-bottom: 30%;
+	float : left;
+	margin: 1.66%;
+	border-radius : 15px;
+	transition: background-color 0.8s ease;
+
+}
+
+.container {
+	padding-left: 20%;
+	padding-right: 20%;
+}
+
+.active {
+	background: #6492db;
+	color: white;
+}
