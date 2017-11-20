@@ -7,6 +7,11 @@ var firstSquare = document.querySelectorAll(".colorSquare");
 var squareHolder = document.querySelector("#squareHolder");
 var titleColor = document.querySelector("#titleColor");
 var resultText = document.querySelector("#result");
+var topBar = document.querySelector("#topBar");
+var resetButton = document.querySelector("#reset");
+var easyButton = document.querySelector("#easy");
+var hardButton = document.querySelector("#hard");
+var activeSelect = document.querySelector(".active");
 //can player click
 var gameOver = false;
 //tileCount was added so that the random square chosen is correct for the difficulty level. 
@@ -25,7 +30,7 @@ function createRandomColor() {
 function assignRandomColor() {
 	for (i =0; i < firstSquare.length; i++){
 	createRandomColor();
-	firstSquare[i].style.background = color;
+	firstSquare[i].style.backgroundColor = color;
 	}
 }
 
@@ -36,15 +41,30 @@ function createEventListeners() {
 			//if correct 
 			if (this.style.background == secretColor && gameOver == false) {
 			result.innerText = "SUCCESS!";
+			resetButton.innerText = "PLAY AGAIN?";
 			gameOver = true;
+			topBar.style.backgroundColor = secretColor;
+			activeSelect = document.querySelector(".active");
+			activeSelect.style.backgroundColor = secretColor;
+			
+			
+			
+
+				for (i =0; i < firstSquare.length; i++){
+	
+	if (firstSquare[i].style.backgroundColor != "black") {
+		firstSquare[i].style.backgroundColor = secretColor;
+	}
 		}
+	}
 		//if already correct before
 		else if (gameOver == true) {
-			result.innerText = "YOU SUCCEEDED!"
+			result.innerText = "YOU SUCCEEDED!";
+			
 		}
 		//if failed
 		else {
-			this.style.background = "black";
+			this.style.backgroundColor = "black";
 			result.innerText = "FAIL!";
 		}
 			});
@@ -53,42 +73,59 @@ function createEventListeners() {
 
 
 //upon new colors reset everything
-document.querySelector("#reset").addEventListener("click", function() {
+resetButton.addEventListener("click", function() {
+	this.style.color = "#6492db";
+ 	this.style.backgroundColor = "white";
 resetGlobal();
 });
 
 //upon easy click
-document.querySelector("#easy").addEventListener("click", function() {
+easyButton.addEventListener("click", function() {
 	//create three squares
 	tileCount = 3;
 	squareHolder.innerHTML = ' <div class = "colorSquare"></div> <div class = "colorSquare"></div> <div class = "colorSquare"></div>';
 	firstSquare = document.querySelectorAll(".colorSquare");
+	
 	//reset game logic
 	resetGlobal();
 	//graphic update to tab
 	this.classList.add("active");
 	document.querySelector("#hard").classList.remove("active");
+	
 	});
 
 //upon hard click
-document.querySelector("#hard").addEventListener("click", function() {
+hardButton.addEventListener("click", function() {
 	//create six squares
 	tileCount = 6;
 	squareHolder.innerHTML = ' <div class = "colorSquare"></div> <div class = "colorSquare"></div> <div class = "colorSquare"></div> <div class = "colorSquare"></div> <div class = "colorSquare"></div> <div class = "colorSquare"></div>';
 	firstSquare = document.querySelectorAll(".colorSquare");
+	
 	//reset game logic
-	resetGlobal();
+		resetGlobal();
 	//graphics update to tab
 	this.classList.add("active");
 	document.querySelector("#easy").classList.remove("active");
+
 	});
 
 //graphical updates for reset tab on hover
-document.querySelector("#reset").addEventListener("mouseover", function() {
-this.classList.toggle("active");
+resetButton.addEventListener("mouseover", function() {
+	if (gameOver == false) {
+	this.style.color = "white";
+ 	this.style.backgroundColor = "#6492db";
+}
+else {
+this.style.backgroundColor = secretColor;
+this.style.color = "white";
+}
+
 });
-document.querySelector("#reset").addEventListener("mouseout", function() {
-this.classList.toggle("active");
+resetButton.addEventListener("mouseout", function() {
+
+	this.style.color = "#6492db";
+ 	this.style.backgroundColor = "white";
+
 });
 
 
@@ -106,6 +143,30 @@ function resetGlobal() {
 	gameOver = false;
 	//reset success text
 	result.innerText = "GUESS A SQUARE!";
+	resetButton.innerText = "NEW COLORS";
+	topBar.style.backgroundColor = "#6492db";
+	
+
+ if (tileCount == 3) {
+ 	easyButton.style.color = "white";
+ 	easyButton.style.backgroundColor = "#6492db";
+ 	hardButton.style.color = "#6492db";
+ 	hardButton.style.backgroundColor = "white";
+ }
+ else if (tileCount == 6) {
+ 	hardButton.style.color = "white";
+ 	hardButton.style.backgroundColor = "#6492db";
+ 	easyButton.style.color = "#6492db";
+ 	easyButton.style.backgroundColor = "white";
+ }
+
+	// if (easyButton.style.backgroundColor != "white"){
+	// 	easyButton.style.Color = "#6492db";
+	// 	easyButton.style.backgroundColor = "white";
+	// }
+
+	
+
 	//create new listeners for squares
 		createEventListeners();
 }
